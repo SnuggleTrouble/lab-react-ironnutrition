@@ -1,24 +1,28 @@
 // src/App.js
 import './App.css';
+import { Card, Row, Col, Divider, Input, Button } from 'antd';
 import foods from './foods.json';
 import { FoodBox } from './components/FoodBox/FoodBox';
 
 function App() {
-  return <div className="App">
-    {foods.map((food) => {
-      return (
-        <div>
-          <p>{food.name}</p>
-          <img src={food.image} alt="food" width={0}/>
-        </div>
-      )
-    })}
-    <FoodBox food={ {
-  name: "Orange",
-  calories: 85,
-  image: "https://i.imgur.com/abKGOcv.jpg",
-  servings: 1
-}} />
-  </div>;
+  return (
+    <div className="App">
+    <Divider> Food List </Divider>
+    <Row style={{justifyContent: "center", textAlign: "center", width: "100vw"}}>
+      {foods.map((food) => {
+        return (
+          <FoodBox
+            food={{
+              name: food.name,
+              calories: food.calories,
+              image: food.image,
+              servings: food.servings,
+            }}
+          />
+        );
+      })}
+      </Row>
+    </div>
+  );
 }
 export default App;
