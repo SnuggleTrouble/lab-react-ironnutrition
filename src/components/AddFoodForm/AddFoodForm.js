@@ -5,8 +5,8 @@ import { useState } from 'react';
 export function AddFoodForm(props) {
   const [name, setName] = useState('');
   const [image, setimage] = useState('');
-  const [calories, setCalories] = useState(0);
-  const [servings, setServings] = useState(0);
+  const [calories, setCalories] = useState(1);
+  const [servings, setServings] = useState(1);
 
   const handleNameInput = (e) => setName(e.target.value);
   const handleImageInput = (e) => setimage(e.target.value);
@@ -16,11 +16,11 @@ export function AddFoodForm(props) {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const newFoodItem = { name, image, calories, servings };
-    props.addFood(newFoodItem);
+    props.addNewFood(newFoodItem);
     setName('');
     setimage('');
-    setCalories(0);
-    setServings(0);
+    setCalories(1);
+    setServings(1);
   };
 
   return (
@@ -33,6 +33,7 @@ export function AddFoodForm(props) {
           value={name}
           type="text"
           name="name"
+          placeholder='Food Name'
           onChange={handleNameInput}
         ></Input>
 
@@ -41,6 +42,7 @@ export function AddFoodForm(props) {
           value={image}
           type="text"
           name="image"
+          placeholder='https://example-images.com/food-item.jpg'
           onChange={handleImageInput}
         ></Input>
 
