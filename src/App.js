@@ -47,9 +47,10 @@ function App() {
 
       <Row style={{ width: '100%', justifyContent: 'center' }}>
         {/* List of Food Box components */}
-        {foods.map((food) => {
+        {searchList.map((food) => {
           return (
             <FoodBox
+              key={food.name}
               food={{
                 name: food.name,
                 calories: food.calories,
