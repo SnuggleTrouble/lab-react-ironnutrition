@@ -13,7 +13,13 @@ export function Search(props) {
       <Divider>Search</Divider>
 
       <label>Search</label>
-      <Input value={search} type="text" name='Search' placeholder='Enter Search Query' onChange={handleSearch} />
+      <Input
+        value={search}
+        type="text"
+        name="Search"
+        placeholder="Enter Search Query"
+        onChange={handleSearch}
+      />
     </>
   );
 }

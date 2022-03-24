@@ -33,7 +33,7 @@ export function AddFoodForm(props) {
           value={name}
           type="text"
           name="name"
-          placeholder='Food Name'
+          placeholder="Food Name"
           onChange={handleNameInput}
         ></Input>
 
@@ -42,7 +42,7 @@ export function AddFoodForm(props) {
           value={image}
           type="text"
           name="image"
-          placeholder='https://example-images.com/food-item.jpg'
+          placeholder="https://example-images.com/food-item.jpg"
           onChange={handleImageInput}
         ></Input>
 

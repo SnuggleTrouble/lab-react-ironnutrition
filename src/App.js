@@ -10,19 +10,28 @@ import { Search } from './components/Search/Search';
 
 function App() {
   const [foodList, setFoodList] = useState(foods);
-  const [searchList, setSearchList] = useState(foods)
+  const [searchList, setSearchList] = useState(foods);
 
   const addNewFood = (newFoodItem) => {
     const amendedFoodList = [...foodList, newFoodItem];
     setFoodList(amendedFoodList);
+    setSearchList(amendedFoodList);
   };
 
   const searchFood = (search) => {
+    const filteredFoodList = searchList.filter((food) => {
+      return food.name.toLowerCase().includes(search.toLowerCase());
+    });
+    setSearchList(filteredFoodList);
+  };
+
+  const deleteFood = (foodItem) => {
     const filteredFoodList = foodList.filter((food) => {
-      return food.name.toLowerCase().includes(search.toLowerCase())
-    })
-    setSearchList(filteredFoodList)
-  }
+      return food.name !== foodItem;
+    });
+    setFoodList(filteredFoodList);
+    setSearchList(filteredFoodList);
+  };
 
   return (
     <div className="App">
@@ -32,7 +41,7 @@ function App() {
       <Button> Hide Form / Add New Food </Button>
 
       {/* The Search Component */}
-      <Search search={searchFood}/>
+      <Search search={searchFood} />
 
       <Divider> Food List </Divider>
 
@@ -47,6 +56,7 @@ function App() {
                 image: food.image,
                 servings: food.servings,
               }}
+              deleteFood={deleteFood}
             />
           );
         })}
