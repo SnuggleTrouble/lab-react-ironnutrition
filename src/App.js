@@ -10,16 +10,15 @@ import { Search } from './components/Search/Search';
 
 function App() {
   const [foodList, setFoodList] = useState(foods);
-  const [searchList, setSearchList] = useState(foods);
+  const [searchList, setSearchList] = useState(foodList);
 
   const addNewFood = (newFoodItem) => {
-    const amendedFoodList = [...foodList, newFoodItem];
-    setFoodList(amendedFoodList);
-    setSearchList(amendedFoodList);
+    setFoodList([...foodList, newFoodItem]);
+    setSearchList(...searchList, newFoodItem);
   };
 
   const searchFood = (search) => {
-    const filteredFoodList = searchList.filter((food) => {
+    const filteredFoodList = foodList.filter((food) => {
       return food.name.toLowerCase().includes(search.toLowerCase());
     });
     setSearchList(filteredFoodList);
